@@ -8,6 +8,9 @@ class UserCreate(BaseModel):
     interests: list
     #image_url: Optional[list]= None
     
+    class Config:
+        orm_mode = True
+    
 class UserDetails (UserCreate):
     id:int
     
