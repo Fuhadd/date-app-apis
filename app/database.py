@@ -5,11 +5,22 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-password = 'indomitables123'
-SQLALCHEMY_DATABASE_URL =  f"postgresql://postges:{password}@localhost:5433/datingapi"
+# password = 'indomitables123'
+# user_name = 'postges'
+# host = 'localhost'
+# db_name = 'dateapp'
+# SQLALCHEMY_DATABASE_URL =  f"postgresql://{user_name}:{password}@{host}:5433/{db_name}"
+
+password = 'c8cf18ef002f10d1cea210d3925b653bacd79dd2643f44677a01e345451612c0'
+user_name = 'pjjwomzqmgrmsq'
+host = 'ec2-44-196-223-128.compute-1.amazonaws.com'
+db_name = 'd9p5qd0d2pit25'
+SQLALCHEMY_DATABASE_URL =  f"postgresql://{user_name}:{password}@{host}:5433/{db_name}"
+
 
 
 engine = create_engine(
+    #f"postgresql://{user_name}:{password}@{host}:5433/{db_name}
     f"postgresql://postgres:indomitables123@localhost/dateapp"
     # SQLALCHEMY_DATABASE_URL
 )
@@ -25,15 +36,15 @@ def get_db():
         db.close()
         
         
-while True:
+# while True:
 
-    try:
-        conn = psycopg2.connect(host='localhost', database='dateapp', user='postgres',
-                                password='indomitables123', cursor_factory=RealDictCursor)
-        cursor = conn.cursor()
-        print("Database connection was succesfull!")
-        break
-    except Exception as error:
-        print("Connecting to database failed")
-        print("Error: ", error)
-        time.sleep(2)
+#     try:
+#         conn = psycopg2.connect(host='localhost', database='dateapp', user='postgres',
+#                                 password='indomitables123', cursor_factory=RealDictCursor)
+#         cursor = conn.cursor()
+#         print("Database connection was succesfull!")
+#         break
+#     except Exception as error:
+#         print("Connecting to database failed")
+#         print("Error: ", error)
+#         time.sleep(2)

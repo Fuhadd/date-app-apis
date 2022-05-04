@@ -11,7 +11,10 @@ from app.models import Base
 # access to the values within the .ini file in use.
 config = context.config
 config.set_main_option(
-    "sqlalchemy.url", f"postgresql+psycopg2://postgres:indomitables123@localhost/dateapp")
+    "sqlalchemy.url", f"postgresql+psycopg2://postgres://pjjwomzqmgrmsq:c8cf18ef002f10d1cea210d3925b653bacd79dd2643f44677a01e345451612c0@ec2-44-196-223-128.compute-1.amazonaws.com:5432/d9p5qd0d2pit25")
+    
+    
+    # postgres:indomitables123@localhost/dateapp")
 
 
 # Interpret the config file for Python logging.
