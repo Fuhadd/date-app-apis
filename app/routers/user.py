@@ -31,7 +31,14 @@ async def create_user(user: schemas.UserCreate, db: Session = Depends(database.g
     return new_user
 
 
-@router.get('/', response_model=List[schemas.UserDetails])
-def get_users(user=schemas.UserDetails, db: Session = Depends(database.get_db),current_user: int = Depends(oauth2.get_current_user)):
+@router.get('/', response_model=List[schemas.UserCreate])
+def get_users(db: Session = Depends(database.get_db),current_user: int = Depends(oauth2.get_current_user)):
     users=db.query(models.User).all()
     return users
+
+@router.get('/test', response_model=schemas.UserDetails)
+def get_users(db: Session = Depends(database.get_db),current_user: int = Depends(oauth2.get_current_user)):
+    
+    users=db.query(models.User).filter(models.User.id == current_user.id).first()
+    return users
+
