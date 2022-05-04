@@ -1,8 +1,8 @@
-"""update user table2
+"""new
 
-Revision ID: e1b5e57dd6d7
-Revises: ea2acdce9c10
-Create Date: 2022-05-03 22:37:55.855266
+Revision ID: 0d5b3278fcb7
+Revises: 
+Create Date: 2022-05-04 13:24:00.708779
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e1b5e57dd6d7'
-down_revision = 'ea2acdce9c10'
+revision = '0d5b3278fcb7'
+down_revision = None
 branch_labels = None
 depends_on = None
 
