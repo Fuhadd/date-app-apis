@@ -13,9 +13,9 @@ from sqlalchemy.orm import sessionmaker
 # SQLALCHEMY_DATABASE_URL =  f"postgresql://{user_name}:{password}@{host}:5433/{db_name}"
 
 cloudinary.config( 
-  cloud_name = "aminu", 
-  api_key = "636974665241245", 
-  api_secret = "KJCHz6yfwnv_SmcsMZZ6HDaqdnc" 
+  cloud_name = "hujwafevi", 
+  api_key = "282969132628724", 
+  api_secret = "KotkJF_mNQQxvQiAQFFF9zFC4a0" 
 )
 
 password = 'c8cf18ef002f10d1cea210d3925b653bacd79dd2643f44677a01e345451612c0'
