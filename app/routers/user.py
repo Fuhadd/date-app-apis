@@ -17,7 +17,7 @@ router = APIRouter(
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.user_error)
-async def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db),uploaded_file: UploadFile = File(...)):
+async def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db),):
 
     hashed_password = utils.hash(user.password)
     
