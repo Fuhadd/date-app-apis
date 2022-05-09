@@ -6,7 +6,7 @@ from time import timezone
 from typing import List, Type
 from sqlalchemy import TIMESTAMP, Boolean, Column, ForeignKey, Integer, String, ARRAY
 from sqlalchemy.orm import relationship
-from sqlalchemy_utils import URLType
+#from sqlalchemy_utils import URLType
 
 from .database import Base
 
@@ -19,7 +19,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
     interests = Column(ARRAY(String), nullable=False, server_default=None)
-    url = Column((URLType))
+    url = Column((str))
     #image_url = Column(ARRAY(URLType))
 
     created_at = Column(TIMESTAMP(timezone=True),
