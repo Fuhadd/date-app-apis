@@ -1,5 +1,6 @@
 import time
 import psycopg2
+import cloudinary
 from psycopg2.extras import RealDictCursor
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,6 +11,12 @@ from sqlalchemy.orm import sessionmaker
 # host = 'localhost'
 # db_name = 'dateapp'
 # SQLALCHEMY_DATABASE_URL =  f"postgresql://{user_name}:{password}@{host}:5433/{db_name}"
+
+cloudinary.config(
+    cloud_name= "hnduusros",
+    api_key= "927131722149478",
+    api_secret ="he5lFnOeoeRDBmV9z9QKCTxhLn0"
+)
 
 password = 'c8cf18ef002f10d1cea210d3925b653bacd79dd2643f44677a01e345451612c0'
 user_name = 'pjjwomzqmgrmsq'

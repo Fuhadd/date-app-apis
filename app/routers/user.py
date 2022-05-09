@@ -1,6 +1,7 @@
 
 from typing import List
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, Depends, status, HTTPException,File, UploadFile
+
 
 from sqlalchemy.orm import Session
 
@@ -16,10 +17,11 @@ router = APIRouter(
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.user_error)
-async def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
+async def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db),uploaded_file: UploadFile = File(...)):
 
     hashed_password = utils.hash(user.password)
-
+    
+    
     user.password = hashed_password
 
     new_user = models.User(**user.dict())

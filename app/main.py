@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import user,auth
+from .routers import user,auth,userpic
 
 app = FastAPI()
 
@@ -26,6 +26,11 @@ app.include_router(
 app.include_router(
     
     auth.router
+)
+
+app.include_router(
+    
+    userpic.router
 )
 
 @app.exception_handler(RequestValidationError)
