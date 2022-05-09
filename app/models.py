@@ -19,7 +19,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
     interests = Column(ARRAY(String), nullable=False, server_default=None)
-    url = Column((str))
+    url = Column(String)
     #image_url = Column(ARRAY(URLType))
 
     created_at = Column(TIMESTAMP(timezone=True),

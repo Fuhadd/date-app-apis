@@ -6,7 +6,7 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     interests: list
-    image_url: list
+    url: str
     username:str
     class Config:
         orm_mode = True

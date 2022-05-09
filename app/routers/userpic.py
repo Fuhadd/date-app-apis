@@ -1,6 +1,6 @@
 import shutil
-import cloudinary
-import cloudinary.uploader
+# import cloudinary
+# import cloudinary.uploader
 from typing import List
 from fastapi import APIRouter, Depends, status, HTTPException,File, UploadFile
 
@@ -13,11 +13,11 @@ from .. import schemas, models
 
 
 router = APIRouter(
-    prefix='/',
+   
     tags=['user']
 )
 
-@router.post('user/test/' )
+@router.post('user/test' )
 def get_users(db: Session = Depends(database.get_db),current_user: int = Depends(oauth2.get_current_user),uploaded_file: UploadFile = File(...)):
     
     user=db.query(models.User).filter(models.User.id == current_user.id).first()
