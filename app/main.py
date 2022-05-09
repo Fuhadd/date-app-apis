@@ -28,10 +28,7 @@ app.include_router(
     auth.router
 )
 
-app.include_router(
-    
-    userpic.router
-)
+
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request, exc):

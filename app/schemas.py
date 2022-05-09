@@ -10,6 +10,7 @@ class UserCreate(BaseModel):
     username:str
     class Config:
         orm_mode = True
+
     
 class UserDetails (UserCreate):
     id:int
@@ -33,4 +34,8 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-
+class UserImageUpload(BaseModel):
+    owner_id: str
+    image_url:str
+    class Config:
+        orm_mode = True
