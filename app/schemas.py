@@ -9,7 +9,7 @@ class UserCreate(BaseModel):
     #interests: list
     username:str
     gender:str
-    age:int
+    age:str
     
     
 
