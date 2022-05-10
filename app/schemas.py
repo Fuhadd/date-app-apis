@@ -36,9 +36,7 @@ class user_error(BaseModel):
 class TokenData(BaseModel):
     id: Optional[str] = None
     
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+
 
 class UserImageUpload(BaseModel):
     owner_id: str
