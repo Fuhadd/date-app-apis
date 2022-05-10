@@ -1,18 +1,24 @@
 from pydantic import BaseModel, EmailStr
 from typing import  Optional
+from datetime import datetime
 
 
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
-    interests: list
-    
+    #interests: list
     username:str
+    gender:str
+    age:int
+    
+    
+
     class Config:
         orm_mode = True
 
     
 class UserDetails (UserCreate):
+    created_at: datetime
     id:int
     
     class Config:

@@ -1,4 +1,5 @@
 from cgitb import text
+from codecs import getencoder
 from email.policy import default
 from http import server
 from sqlite3 import Timestamp
@@ -18,10 +19,10 @@ class User(Base):
     username = Column(String, nullable=False,server_default='user')
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
-    interests = Column(ARRAY(String), nullable=False, server_default=None)
-    # url = Column(String)
-    #image_url = Column(ARRAY(URLType))
-
+    gender = Column(String, nullable=False,server_default='male')
+    age= Column(String, nullable=False,server_default='age')
+    #interests = Column(ARRAY(String), nullable=False, server_default=None)
+    
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default='now()')
     #is_active = Column(Boolean, default=True,nullable=False)
