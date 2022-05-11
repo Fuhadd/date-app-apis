@@ -73,7 +73,7 @@ async def get_users(db: Session = Depends(database.get_db), current_user: int = 
     db.commit()
     db.refresh(new_image)
 
-    return (image_url)
+    return (new_image)
 
 
 @router.get('/images/{id}')
@@ -92,6 +92,24 @@ async def get_users(id:int, db: Session = Depends(database.get_db), current_user
     # db.refresh(new_image)
 
     return user_image
+
+@router.get('/images')
+async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user),):
+
+    # images = db.query(models.Images, func.count(models.Images.id).label("images")).join(
+    #     models.User, models.User.id == models.Images.owner_id, isouter=True).group_by(models.Users.id).filter(models.Post.id == id).first()
+
+    user_image=db.query(models.Images).filter(models.Images.owner_id==current_user.id).all()
+ 
+    # new_image = models.Images(owner_id=current_user.id, image_url=image_url)
+    # print(new_image)
+
+    # db.add(new_image)
+    # db.commit()
+    # db.refresh(new_image)
+
+    return user_image
+
 
 
 
