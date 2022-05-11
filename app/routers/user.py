@@ -73,7 +73,7 @@ async def get_users(db: Session = Depends(database.get_db), current_user: int = 
     db.commit()
     db.refresh(new_image)
 
-    return new_image
+    return (image_url)
 
 
 @router.get('/images/{id}')
