@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import user,auth,userpic,images
+from .routers import interests, user,auth,images,interest
 
 app = FastAPI()
 
@@ -32,6 +32,11 @@ app.include_router(
 app.include_router(
     
     images.router
+)
+
+app.include_router(
+    
+    interest.router
 )
 
 

@@ -15,6 +15,17 @@ class UserCreate(BaseModel):
 
     class Config:
         orm_mode = True
+        
+class UserImage(BaseModel):
+    owner_id: str
+    
+    interests: list
+    
+    
+    
+
+    class Config:
+        orm_mode = True
 
     
 class UserDetails (UserCreate):

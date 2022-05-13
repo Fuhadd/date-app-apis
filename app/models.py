@@ -16,13 +16,13 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True, nullable=False)
-    username = Column(String, nullable=False,server_default='user')
+    username = Column(String, nullable=False, server_default='user')
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
-    gender = Column(String, nullable=False,server_default='male')
-    age= Column(String, nullable=False,server_default='age')
-    #interests = Column(ARRAY(String), nullable=False, server_default=None)
+    gender = Column(String, nullable=False, server_default='male')
+    age = Column(String, nullable=False, server_default='age')
     
+
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default='now()')
     #is_active = Column(Boolean, default=True,nullable=False)
@@ -34,15 +34,27 @@ class Images(Base):
     __tablename__ = "images"
     id = Column(Integer, primary_key=True, index=True, nullable=False)
 
-    
-    
     image_url = Column(String, nullable=False)
-    
+
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default='now()')
-    
+
     owner_id = Column(Integer, ForeignKey(
         "users.id", ondelete="CASCADE"))
 
     owner = relationship("User")
     
+    
+class Interest(Base):
+    __tablename__ = "interest"
+    id = Column(Integer, primary_key=True, index=True, nullable=False)
+
+    interests = Column(ARRAY(String), nullable=False, server_default=None)
+
+    created_at = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default='now()')
+
+    owner_id = Column(Integer, ForeignKey(
+        "users.id", ondelete="CASCADE"))
+
+    owner = relationship("User")
