@@ -16,8 +16,8 @@ class UserCreate(BaseModel):
     class Config:
         orm_mode = True
         
+
 class UserInterest(BaseModel):
-    owner_id: str
     
     interests: list
     

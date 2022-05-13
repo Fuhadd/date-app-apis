@@ -23,8 +23,8 @@ router = APIRouter(
 
 
 
-@router.post('/',response_model=schemas.UserInterest)
-async def get_users(interests:List[str],db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
+@router.post('/')
+async def get_users(interests:schemas.UserInterest,db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
 
     user = db.query(models.User).filter(
         models.User.id == current_user.id).first()
@@ -35,7 +35,7 @@ async def get_users(interests:List[str],db: Session = Depends(database.get_db), 
 
     
 
-    interest = models.Interest(owner_id=current_user.id, interests=interests)
+    interest = models.Interest(**interests.dict())
     
 
 
