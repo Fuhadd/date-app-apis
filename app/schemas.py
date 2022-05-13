@@ -23,6 +23,7 @@ class UserInterest(BaseModel):
     
     
     
+    
 
     class Config:
         orm_mode = True

@@ -32,10 +32,12 @@ async def get_users(interests:schemas.UserInterest,db: Session = Depends(databas
     if not user:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Credentials")
+        
+    
 
     
 
-    interest = models.Interest(**interests.dict())
+    interest = models.Interest(owner_id=current_user.id, **interests.dict())
     
 
 
