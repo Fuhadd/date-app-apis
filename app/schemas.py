@@ -14,7 +14,7 @@ class UserCreate(BaseModel):
     income:str
     address:str
     state:str
-    dob:str
+    dob: datetime
     grant:str
     credit_score:str
     grant_reason:str

@@ -37,7 +37,7 @@ class User(Base):
     password = Column(String, nullable=False)
     # gender = Column(String, nullable=False, server_default='male')
     # age = Column(String, nullable=False, server_default='age')
-    image_url = Column(String, nullable=False)
+    # image_url = Column(String, nullable=False)
     
 
     created_at = Column(TIMESTAMP(timezone=True),
