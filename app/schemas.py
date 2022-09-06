@@ -20,6 +20,7 @@ class UserCreate(BaseModel):
     grant_reason:str
     firstname:str
     lastname:str
+    created_at:datetime
  
  
 

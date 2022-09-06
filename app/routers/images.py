@@ -47,6 +47,40 @@ async def get_users(db: Session = Depends(database.get_db), current_user: int = 
     return (new_image)
 
 
+
+
+
+# @router.post('/')
+# async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user), uploaded_file: UploadFile = File(...)):
+
+#     user = db.query(models.User).filter(
+#         models.User.id == current_user.id).first()
+    
+    
+#     user_time=db.query(models.I).filter(models.Images.owner_id==id).all()
+    
+
+#     if not user:
+#         raise HTTPException(
+#             status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Credentials")
+
+#     result = cloudinary.uploader.upload(uploaded_file.file)
+#     print(result)
+#     image_url = result.get("url")
+
+#     new_image = models.Images(owner_id=current_user.id, image_url=image_url)
+#     print(new_image)
+
+#     db.add(new_image)
+#     db.commit()
+#     db.refresh(new_image)
+
+#     return (new_image)
+
+
+
+
+
 @router.get('/images/{id}')
 async def get_users(id:int, db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user),):
 

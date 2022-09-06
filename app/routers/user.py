@@ -1,9 +1,12 @@
+from collections import UserDict
+from datetime import datetime
 from operator import mod
 import cloudinary
 import cloudinary.uploader
 from typing import List
 from fastapi import APIRouter, Depends, status, HTTPException, File, UploadFile
 from sqlalchemy.orm import Session
+from datetime import datetime, timezone
 
 
 from sqlalchemy import func
@@ -28,6 +31,7 @@ async def create_user(user: schemas.UserCreate,db: Session = Depends(database.ge
     hashed_password = utils.hash(user.password)
 
     user.password = hashed_password
+    user.created_at = datetime.now(timezone.utc)
 
     new_user = models.User(**user.dict())
 
@@ -50,6 +54,30 @@ def get_users(db: Session = Depends(database.get_db), current_user: int = Depend
     users = db.query(models.User).filter(
         models.User.id == current_user.id).first()
     return users
+
+
+@router.post('/testy')
+async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
+    
+
+    user = db.query(models.User.created_at).filter(
+        models.User.id == current_user.id).first()
+    
+    created_at = user['created_at']
+    
+    time_difference = datetime.now(timezone.utc) - created_at
+    
+    time_difference_in_seconds =  time_difference.total_seconds()
+    result = False
+    
+    if time_difference_in_seconds > 3600:
+        result = True 
+    
+   
+    print( time_difference_in_seconds )
+    print(created_at)
+
+    return (result)
 
 
 
