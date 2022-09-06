@@ -29,15 +29,15 @@ app.include_router(
     auth.router
 )
 
-app.include_router(
+# app.include_router(
     
-    images.router
-)
+#     images.router
+# )
 
-app.include_router(
+# app.include_router(
     
-    interest.router
-)
+#     interest.router
+# )
 
 
 

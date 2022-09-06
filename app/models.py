@@ -16,11 +16,28 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True, nullable=False)
-    username = Column(String, nullable=False, server_default='user')
+    firstname = Column(String, nullable=False, server_default='user')
+    lastname = Column(String, nullable=False, server_default='user')
+    othername = Column(String, nullable=False, server_default='')
+    phone = Column(String, nullable=False, server_default='')
+    occupation = Column(String, nullable=False, server_default='')
+    income =  Column(String, nullable=False, server_default='')
+    address =  Column(String, nullable=False, server_default='')
+    state =  Column(String, nullable=False, server_default='')
+    dob = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default='now()')
+    grant = Column(String, nullable=False, server_default='')
+    credit_score = Column(String, nullable=False, server_default='')
+    grant_reason = Column(String, nullable=False, server_default='')
+    
+    
+    
+    
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
-    gender = Column(String, nullable=False, server_default='male')
-    age = Column(String, nullable=False, server_default='age')
+    # gender = Column(String, nullable=False, server_default='male')
+    # age = Column(String, nullable=False, server_default='age')
+    image_url = Column(String, nullable=False)
     
 
     created_at = Column(TIMESTAMP(timezone=True),
@@ -30,31 +47,31 @@ class User(Base):
    # items = relationship("Item", back_populates="owner")
 
 
-class Images(Base):
-    __tablename__ = "images"
-    id = Column(Integer, primary_key=True, index=True, nullable=False)
+# class Images(Base):
+#     __tablename__ = "images"
+#     id = Column(Integer, primary_key=True, index=True, nullable=False)
 
-    image_url = Column(String, nullable=False)
+#     image_url = Column(String, nullable=False)
 
-    created_at = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default='now()')
+#     created_at = Column(TIMESTAMP(timezone=True),
+#                         nullable=False, server_default='now()')
 
-    owner_id = Column(Integer, ForeignKey(
-        "users.id", ondelete="CASCADE"))
+#     owner_id = Column(Integer, ForeignKey(
+#         "users.id", ondelete="CASCADE"))
 
-    owner = relationship("User")
+#     owner = relationship("User")
     
     
-class Interest(Base):
-    __tablename__ = "interest"
-    id = Column(Integer, primary_key=True, index=True, nullable=False)
+# class Interest(Base):
+#     __tablename__ = "interest"
+#     id = Column(Integer, primary_key=True, index=True, nullable=False)
 
-    interests = Column(ARRAY(String), nullable=False, server_default=None)
+#     interests = Column(ARRAY(String), nullable=False, server_default=None)
 
-    created_at = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default='now()')
+#     created_at = Column(TIMESTAMP(timezone=True),
+#                         nullable=False, server_default='now()')
 
-    owner_id = Column(Integer, ForeignKey(
-        "users.id", ondelete="CASCADE"))
+#     owner_id = Column(Integer, ForeignKey(
+#         "users.id", ondelete="CASCADE"))
 
-    owner = relationship("User")
+#     owner = relationship("User")

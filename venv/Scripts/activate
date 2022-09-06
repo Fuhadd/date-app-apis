@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\HP\Development\Project\Python\DatingApi\venv"
+VIRTUAL_ENV="C:\Users\foaminu\Development\Python\date-app-apis\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

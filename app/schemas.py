@@ -1,17 +1,30 @@
 from pydantic import BaseModel, EmailStr
 from typing import  Optional
 from datetime import datetime
+from fastapi import APIRouter, Depends, status, HTTPException, File, UploadFile
 
 
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
     #interests: list
-    username:str
+    othername:str
+    phone:str
+    occupation:str
+    income:str
+    address:str
+    state:str
+    dob:str
+    grant:str
+    credit_score:str
+    grant_reason:str
+    firstname:str
+    lastname:str
     gender:str
     age:str
-    
-    
+    image_url:str
+    uploaded_file: UploadFile = File(...)
+  
 
     class Config:
         orm_mode = True
