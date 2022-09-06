@@ -47,19 +47,19 @@ class User(Base):
    # items = relationship("Item", back_populates="owner")
 
 
-# class Images(Base):
-#     __tablename__ = "images"
-#     id = Column(Integer, primary_key=True, index=True, nullable=False)
+class Images(Base):
+    __tablename__ = "images"
+    id = Column(Integer, primary_key=True, index=True, nullable=False)
 
-#     image_url = Column(String, nullable=False)
+    image_url = Column(String, nullable=False)
 
-#     created_at = Column(TIMESTAMP(timezone=True),
-#                         nullable=False, server_default='now()')
+    created_at = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default='now()')
 
-#     owner_id = Column(Integer, ForeignKey(
-#         "users.id", ondelete="CASCADE"))
+    owner_id = Column(Integer, ForeignKey(
+        "users.id", ondelete="CASCADE"))
 
-#     owner = relationship("User")
+    owner = relationship("User")
     
     
 # class Interest(Base):

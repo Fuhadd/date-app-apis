@@ -23,20 +23,11 @@ router = APIRouter(
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserDetails)
-async def create_user(user: schemas.UserCreate, db: Session = Depends(database.get_db),):
+async def create_user(user: schemas.UserCreate,db: Session = Depends(database.get_db),):
 
     hashed_password = utils.hash(user.password)
 
     user.password = hashed_password
-    
-    result = cloudinary.uploader.upload(user.uploaded_file)
-    print(result)
-    image_url = result.get("url")
-    user.image_url = image_url
-
-    
-    
-    
 
     new_user = models.User(**user.dict())
 

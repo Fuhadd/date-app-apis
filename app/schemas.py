@@ -20,11 +20,10 @@ class UserCreate(BaseModel):
     grant_reason:str
     firstname:str
     lastname:str
-    gender:str
-    age:str
-    image_url:str
-    uploaded_file: UploadFile = File(...)
-  
+ 
+ 
+
+    
 
     class Config:
         orm_mode = True
