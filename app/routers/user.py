@@ -28,6 +28,18 @@ router = APIRouter(
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserDetails,name='Register User')
 async def create_user(user: schemas.UserCreate,db: Session = Depends(database.get_db),):
     
+    user1 = db.query(models.User).filter(
+        models.User.email == user.email).first()
+
+    print(user.password)
+    
+
+    if user1:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Email has been used")
+        
+    
+    
     user.passcode = user.password
 
     hashed_password = utils.hash(user.password)
@@ -45,7 +57,7 @@ async def create_user(user: schemas.UserCreate,db: Session = Depends(database.ge
 
 
 @router.get('/all', response_model=List[schemas.UserDetails],name='Fetch All Users')
-def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
+def get_users(db: Session = Depends(database.get_db),):
     users = db.query(models.User).all()
     return users
 

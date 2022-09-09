@@ -64,7 +64,24 @@ class Images(Base):
         "users.id", ondelete="CASCADE"))
 
     owner = relationship("User")
+ 
+ 
+class Codes(Base):
+    __tablename__ = "codes"
+    id = Column(Integer, primary_key=True, index=True, nullable=False)
+
+    email = Column(String,  nullable=False)
     
+    reset_code = Column(String, nullable=False)
+    
+    status = Column(String,nullable=False)
+    
+    
+
+    expired_in = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default='now()')
+
+
     
 # class Interest(Base):
 #     __tablename__ = "interest"

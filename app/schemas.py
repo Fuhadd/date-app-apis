@@ -23,9 +23,6 @@ class UserCreate(BaseModel):
     passcode:str
     created_at:datetime
  
- 
-
-    
 
     class Config:
         orm_mode = True
@@ -46,6 +43,14 @@ class UserInterest(BaseModel):
 class UserDetails (UserCreate):
     created_at: datetime
     id:int
+    
+    class Config:
+        orm_mode = True
+
+
+class ForgotPassword (BaseModel):
+    email: EmailStr
+    
     
     class Config:
         orm_mode = True
