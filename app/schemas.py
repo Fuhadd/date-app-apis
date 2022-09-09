@@ -8,20 +8,20 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     #interests: list
-    othername:str
+    othername:Optional[str]
     phone:str
-    occupation:str
+    occupation:Optional[str]
     income:int
     address:str
     state:str
-    dob: datetime
+    dob: Optional[datetime]
     grant:str
     credit_score:int
     grant_reason:str
     firstname:str
     lastname:str
-    passcode:str
-    created_at:datetime
+    passcode:Optional[str]
+    created_at:Optional[datetime]
  
 
     class Config:
