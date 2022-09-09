@@ -23,7 +23,7 @@ router = APIRouter(
 
 
 
-@router.post('/')
+@router.post('/',name='Save User Image')
 async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user), uploaded_file: UploadFile = File(...)):
 
     user = db.query(models.User).filter(
@@ -81,24 +81,24 @@ async def get_users(db: Session = Depends(database.get_db), current_user: int = 
 
 
 
-@router.get('/images/{id}')
-async def get_users(id:int, db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user),):
+# @router.get('/images/{id}')
+# async def get_users(id:int, db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user),):
 
-    # images = db.query(models.Images, func.count(models.Images.id).label("images")).join(
-    #     models.User, models.User.id == models.Images.owner_id, isouter=True).group_by(models.Users.id).filter(models.Post.id == id).first()
+#     # images = db.query(models.Images, func.count(models.Images.id).label("images")).join(
+#     #     models.User, models.User.id == models.Images.owner_id, isouter=True).group_by(models.Users.id).filter(models.Post.id == id).first()
 
-    user_image=db.query(models.Images).filter(models.Images.owner_id==id).all()
+#     user_image=db.query(models.Images).filter(models.Images.owner_id==id).all()
  
-    # new_image = models.Images(owner_id=current_user.id, image_url=image_url)
-    # print(new_image)
+#     # new_image = models.Images(owner_id=current_user.id, image_url=image_url)
+#     # print(new_image)
 
-    # db.add(new_image)
-    # db.commit()
-    # db.refresh(new_image)
+#     # db.add(new_image)
+#     # db.commit()
+#     # db.refresh(new_image)
 
-    return user_image
+#     return user_image
 
-@router.get('/')
+@router.get('/',name='Fetch User Image')
 async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user),):
 
     # images = db.query(models.Images, func.count(models.Images.id).label("images")).join(
@@ -118,12 +118,12 @@ async def get_users(db: Session = Depends(database.get_db), current_user: int = 
 
 
 
-@router.get('/all',)
-def get_users(db: Session = Depends(database.get_db),):
-    users = db.query(models.User,models.Images ).join(
-         models.Images, models.User.id == models.Images.owner_id, isouter=True).filter()
-    print (users)
+# @router.get('/all',)
+# def get_users(db: Session = Depends(database.get_db),):
+#     users = db.query(models.User,models.Images ).join(
+#          models.Images, models.User.id == models.Images.owner_id, isouter=True).filter()
+#     print (users)
     
 
 
-    return users.first()
+#     return users.first()

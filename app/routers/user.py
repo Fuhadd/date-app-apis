@@ -25,8 +25,10 @@ router = APIRouter(
 )
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserDetails)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserDetails,name='Register User')
 async def create_user(user: schemas.UserCreate,db: Session = Depends(database.get_db),):
+    
+    user.passcode = user.password
 
     hashed_password = utils.hash(user.password)
 
@@ -42,13 +44,13 @@ async def create_user(user: schemas.UserCreate,db: Session = Depends(database.ge
     return new_user
 
 
-@router.get('/', response_model=List[schemas.UserDetails])
+@router.get('/all', response_model=List[schemas.UserDetails],name='Fetch All Users')
 def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
     users = db.query(models.User).all()
     return users
 
 
-@router.get('/test', response_model=schemas.UserDetails)
+@router.get('/', response_model=schemas.UserDetails,name='Fetch User Details')
 def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
 
     users = db.query(models.User).filter(
@@ -56,7 +58,7 @@ def get_users(db: Session = Depends(database.get_db), current_user: int = Depend
     return users
 
 
-@router.post('/testy')
+@router.post('/time',name='3hrs Time Lag Feature')
 async def get_users(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
     
 
