@@ -24,13 +24,13 @@ class User(Base):
     othername = Column(String, nullable=True, server_default='')
     phone = Column(String, nullable=False, server_default='')
     occupation = Column(String, nullable=True, server_default='')
-    income =  Column(Integer, nullable=False, server_default='')
+    gender = Column(String, nullable=True, server_default='')
+    income =  Column(String, nullable=False, server_default='')
     address =  Column(String, nullable=False, server_default='')
     state =  Column(String, nullable=False, server_default='')
-    dob = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default='now()')
+    dob =  Column(String, nullable=False, server_default='')
     grant = Column(String, nullable=False, server_default='')
-    credit_score = Column(Integer, nullable=False, server_default='')
+    credit_score = Column(String, nullable=False, server_default='')
     grant_reason = Column(String, nullable=False, server_default='')
     passcode = Column(String, nullable=False, server_default='')
     

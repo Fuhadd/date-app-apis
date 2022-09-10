@@ -11,12 +11,12 @@ class UserCreate(BaseModel):
     othername:Optional[str]
     phone:str
     occupation:Optional[str]
-    income:int
+    income:str
     address:str
     state:str
-    dob: Optional[datetime]
+    dob: Optional[str]
     grant:str
-    credit_score:int
+    credit_score:str
     grant_reason:str
     firstname:str
     lastname:str
